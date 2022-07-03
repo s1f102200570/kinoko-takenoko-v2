@@ -21,7 +21,7 @@ def answer():
         takenoko_count += 1
     
     #メッセージの追加
-    # python内のカウンタの更新
+    # python内のカウンタの更
     messages.append(request.form.get('message'))
     if len(messages) > 3:
         messages.pop(0)
@@ -40,6 +40,9 @@ def answer():
         # メッセージのフォーマット
         m = re.sub(r'\*(.+)\*', r'<strong>\1</strong>', m)
         m = re.sub(r'(\d{2,3})-\d+-\d+', r'\1-****-****', m)
+
+        #URLを見つける操作
+        m=re.sub(r'(https?://[\w/:%#$&?()~.=+-]+)',r'<a href="\1">\1</a>',m)
 
         message_html += f'<div class="alert {c}" role="alert">{m}</div>\n'
 
