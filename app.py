@@ -8,7 +8,6 @@ messages=['Hi1','Hi2']
 @app.route('/')
 def top():
     return render_template('index.html', **vars())
-
 @app.route('/vote', methods=['POST'])
 def answer():
     # 進捗グラフの更新
